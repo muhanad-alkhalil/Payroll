@@ -1,9 +1,10 @@
 const { Sequelize } = require('sequelize');
 const { DataTypes } = require('sequelize');
+const path = require('path');
 
 const sequelize = new Sequelize({
   dialect: 'sqlite',
-  storage: './database.sqlite'
+  storage: path.join(__dirname, 'database.sqlite'),
 });
 
 const User = sequelize.define('User', {

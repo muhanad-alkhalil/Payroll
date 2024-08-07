@@ -1,9 +1,11 @@
 const express = require('express');
+var cors = require('cors');
 const bodyParser = require('body-parser');
 const { sequelize } = require('./db');
 const router = require('./routes');
 
 const app = express();
+app.use(cors())
 app.use(bodyParser.json());
 
 app.get('/health', (req, res) => {

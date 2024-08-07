@@ -27,10 +27,10 @@ router.post('/api/auth/login', async (req, res) => {
   const { username, password } = req.body;
 
   const user = await User.findOne({ where: { username } });
-  if (!user) return res.status(400).send('Username or password is wrong');
+  if (!user) return res.status(400).send({"message":'Username or password is wrong'});
 
   const validPass = await bcrypt.compare(password, user.password);
-  if (!validPass) return res.status(400).send('Invalid password');
+  if (!validPass) return res.status(400).send({"message":'Username or password is wrong'});
 
   const token = jwt.sign({ id: user.id }, 'secret$$');
   res.header('Authorization', token).send({token});
