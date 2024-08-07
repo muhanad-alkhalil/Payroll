@@ -1,21 +1,18 @@
 import { useState } from 'react';
-import Sidebar from '../Sidebar/Sidebar';
 import Header from '../Header/Header';
 import { Outlet } from 'react-router-dom';
-
-const DefaultLayout = () => {
+const AuthLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <div className="dark:bg-boxdark-2 dark:text-bodydark">
       <div className="flex h-screen overflow-hidden">
-        <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
         <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
           <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
           <main>
-            <div className="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+            <div className="mx-auto w-full md:w-1/2 lg:w-1/3 xl:w-1/2 p-4 md:p-6 2xl:p-10">
               <Outlet />
             </div>
           </main>
@@ -25,4 +22,4 @@ const DefaultLayout = () => {
   );
 };
 
-export default DefaultLayout;
+export default AuthLayout;
