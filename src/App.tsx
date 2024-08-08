@@ -10,6 +10,8 @@ import Register from "./features/auth/Register";
 import { useEffect, useState } from "react";
 import Loader from "./components/Loader/Loader";
 import EmployeeList from "./features/employees/EmployeeList";
+import Salaries from "./features/salaries/Saleries";
+import SalaryHistory from "./features/salaries/SalaryHistory";
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -26,8 +28,9 @@ function App() {
         {/* Group with DefaultLayout */}
         <Route element={<ProtectedRoute />}>
         <Route element={<DefaultLayout />}>
-          <Route index element={<EmployeeList />} />
-          {/* <Route path="/about" element={<AboutPage />} /> */}
+          <Route index path="/employees" element={<EmployeeList />} />
+          <Route path="/salaries" element={<Salaries />} />
+          <Route path="/salaries/history" element={<SalaryHistory />} />
         </Route>
         </Route>
         
@@ -38,7 +41,7 @@ function App() {
 
         </Route>
         <Route path="/logout" element={<Logout />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<Navigate to="/employees" replace />} />
       </Routes>
       <ToastContainer />
     </Router>

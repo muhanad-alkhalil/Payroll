@@ -19,9 +19,15 @@ const remove = async (id:number): Promise<string> => {
     return res.data;
   };
 
+const getAllWithSalaries = async (): Promise<Employee[]> => {
+  const res = await axios.get<Employee[]>('/employees/salaries');
+  return res.data;
+};
+
 export default {
     getAll,
     add,
     update,
-    remove
+    remove,
+    getAllWithSalaries
 };

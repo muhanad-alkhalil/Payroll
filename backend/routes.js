@@ -78,12 +78,17 @@ router.get('/api/employees', auth, async (req, res) => {
     }
   });
 
-  router.get('api/salaries', auth, async (req, res) => {
+  router.get('/api/employees/salaries', auth, async (req, res) => {
+    const salaries = await Employee.findAll({ include: Salary });
+    res.json(salaries);
+  });
+
+  router.get('/api/salaries', auth, async (req, res) => {
     const salaries = await Salary.findAll({ include: Employee });
     res.json(salaries);
   });
   
-  router.post('api/salaries', auth, async (req, res) => {
+  router.post('/api/salaries', auth, async (req, res) => {
     const { employeeId, month, year, additions, deductions, isEndOfService } = req.body;
     const salary = new Salary({ employeeId, month, year, additions, deductions, isEndOfService });
   
@@ -95,7 +100,7 @@ router.get('/api/employees', auth, async (req, res) => {
     }
   });
   
-  router.get('api/salaries/history', auth, async (req, res) => {
+  router.get('/api/salaries/history', auth, async (req, res) => {
     const salaries = await Salary.findAll({ include: Employee });
     res.json(salaries);
   });
