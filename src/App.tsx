@@ -26,7 +26,7 @@ function App() {
         {/* Group with DefaultLayout */}
         <Route element={<ProtectedRoute />}>
         <Route element={<DefaultLayout />}>
-          {/* <Route index element={<EmployeeList />} /> */}
+          <Route index element={<EmployeeList />} />
           {/* <Route path="/about" element={<AboutPage />} /> */}
         </Route>
         </Route>
