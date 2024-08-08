@@ -1,3 +1,7 @@
+// This backend is for test purposes only.
+// It is not implemented with respect to best practices.
+// Use it only for demonstration and testing.
+
 const express = require('express');
 var cors = require('cors');
 const bodyParser = require('body-parser');
